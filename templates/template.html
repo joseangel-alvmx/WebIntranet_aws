@@ -1,0 +1,211 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>IntranetNews</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <!--link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"-->
+    <link href="{% static 'css/carrusel_css.css' %}" rel="stylesheet">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/slick.css' %}" rel="stylesheet">
+    <!--<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
+    <script src="{% static 'javasript/followers.js' %}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid d-none d-lg-block">
+        <div class="row align-items-center bg-dark px-lg-12">
+            <div class="col-lg-7">
+                <div class="col-lg-12 text-left d-none d-md-block">
+                    <nav class="navbar navbar-expand-sm bg-dark p-0">
+                        <ul class="navbar-nav ml-auto mr-n2">
+                            <li class="nav-item">
+                                <a class="nav-link text-body" target="blank_" href="https://www.tiktok.com/@alvamexpinturasoficial?_t=8pK758Jln3F&_r=1"><i class="bi bi-tiktok"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-body" target="blank_" href="https://www.facebook.com/Alvamex"><i class="bi bi-facebook"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-body" target="blank_" href="https://www.linkedin.com/company/alvamex/"><i class="bi bi-linkedin"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-body" target="blank_" href="https://www.instagram.com/alvamex_oficial/?hl=es"><i class="bi bi-instagram"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-body" target="blank_" href="https://www.youtube.com/@alvamexpinturas3301"><i class="bi bi-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center bg-white py-0 px-lg-3" >
+            <div class="col-lg-4">
+                <a href="/empresa/" class="navbar-brand p-0 d-none d-lg-block">
+                    <h1 class="m-0 display-4 text-uppercase text-primary">Intranet<span class="text-secondary font-weight-normal">News</span></h1>
+                </a>
+            </div>
+            <div class="col-lg-8 text-center text-lg-right" style="height: 7rem;">
+                <a href="https://www.alvamex.com.mx/"><img class="img-fluid" src="{% static 'imagenes/alvamex.png' %}" alt="Alvamex" style="height: 100%;"></a>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div id ="Navbar" class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
+            <a href="index.html" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-4 text-uppercase text-primary">Intranet<span class="text-white font-weight-normal">News</span></h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="/empresa/" class="nav-item nav-link">Inicio</a>
+                    <a href="/promociones/" class="nav-item nav-link">Promociones</a>
+                    <a href="#ultimasnoticias" class="nav-item nav-link">Noticias Recientes</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Modulos</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="/universidad/" class="dropdown-item">Universidad</a>
+                            <a href="/cedis/" class="dropdown-item">Ubicación de Cedis</a>
+                            <a href="/pyp/" class="dropdown-item">Procesos y Politicas</a>
+                        </div>
+                    </div>
+                    <a href="#footer_idx" class="nav-item nav-link">Contacto</a>
+                </div>
+                <div class="navbar-nav  py-0" style="width: 100%; max-width: 300px;">
+                    {% if user.is_authenticated %}
+                    <a id="cerrar_sesion" href="/logout" class="nav-item nav-link">CERRAR SESIÓN</a>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+    
+    
+    <!-- block content-->
+
+
+
+    <!-- end block -->
+
+
+    <!-- Footer Start -->
+    <div id="footer_idx" class="container-fluid bg-dark pt-1 px-sm-3 px-md-5 mt-1">
+        <div class="row py-4">
+            <div class="col-lg-4 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Encuentranos en</h5>
+                <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>Guadalajara #29,Col. Constitución de 1917, Tlanepantla, Edo. de México C.P 54190</p>
+                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>55 5569 6433, 55 5569 6591</p>
+                <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>atencionclientes@alvamex.com.mx</p>
+                <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Siguenos</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.tiktok.com/@alvamexpinturasoficial?_t=8pK758Jln3F&_r=1"><i class="fab fa-tiktok"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.facebook.com/Alvamex"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.linkedin.com/company/alvamex/"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.instagram.com/alvamex_oficial/"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-lg btn-secondary btn-lg-square" href="https://www.youtube.com/@alvamexpinturas3301"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Noticias mas Populares</h5>
+                <div class="mb-3">
+                    <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Noticia</a>
+                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                    </div>
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Capacitacion Facturacion MBA3...</a>
+                </div>
+                <div class="mb-3">
+                    <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Noticia</a>
+                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                    </div>
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Capacitacion Facturacion MBA3...</a>
+                </div>
+                <div class="">
+                    <div class="mb-2">
+                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">Noticia</a>
+                        <a class="text-body" href=""><small>Jan 01, 2045</small></a>
+                    </div>
+                    <a class="small text-body text-uppercase font-weight-medium" href="">Capacitacion Facturacion MBA3...</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12 mb-5">
+                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Galeria</h5>
+                <div class="row">
+                    <div class="col-4 mb-3">
+                        <a href="#noticias_principales"><img style="width: 100%; height: 10vh;" src="{% static 'imagenes/perfect.jpg'%}" alt="perfect"></a>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <a href=""><img style="width: 100%; height: 10vh;" src="{% static 'imagenes/perfect.jpg'%}" alt=""></a>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <a href=""><img style="width: 100%; height: 10vh;" src="{% static 'imagenes/perfect.jpg'%}" alt=""></a>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <a href=""><img style="width: 100%; height: 10vh;" src="{% static 'imagenes/perfect.jpg'%}" alt=""></a>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <a href=""><img style="width: 100%; height: 10vh;" src="{% static 'imagenes/perfect.jpg'%}" alt=""></a>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <a href=""><img style="width: 100%; height: 10vh;" src="{% static 'imagenes/perfect.jpg'%}" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid py-4 px-sm-3 px-md-5 bg-dark" style="">
+        <p class="m-0 text-center" style="color: #fff; font-weight:600;">&copy; <span href="#">Copyright</span>. Todos los derechos reservados. 
+		Diseñado para <a style="color: #fff; font-weight:600;" id="copy_footer" href="https://www.alvamex.com.mx/">Grupo Alva "Pintando el Futuro"</a></p>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary btn-square back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

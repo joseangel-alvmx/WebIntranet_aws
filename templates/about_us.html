@@ -1,0 +1,390 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Grupo Alva </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="{% static 'imagenes/GrupoALVA_2.png'%}" rel="icon">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="{% static 'css/slick.css' %}" rel="stylesheet">
+    <link href="{% static 'css/parallax.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<style>
+
+    :root{
+        --principal: #44b5e1;
+        --sombra: #1e6e8d;
+    }
+    
+    .card{
+        margin:5%;
+        margin-left:20%;
+        position: relative;
+        width: 500px;
+        height: 500px;
+        border-radius: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        background: none;
+    }
+    .card:hover{
+        width: 600px;
+        transition-delay: 0.5s;
+        
+    }
+    .card .circle{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .card .circle::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        border: 8px solid var(--clr);
+        background: #191919;
+        transition: 0.5s, background 0.5s;
+        transition-delay: 0.75s,1s;
+        filter: drop-shadow(0 0 10px var(--clr)) drop-shadow(0 0 60px var(--clr));
+    }
+    .card:hover .circle::before{
+        width: 100%;
+        transition-delay: 0.5s;
+        height: 100%;
+        border-radius: 20px;
+        background: var(--bg);
+    }
+    .card .circle .logo{
+        position: relative;
+        width: 450px;
+        transition: 0.5s;
+        transition-delay: 0.5s;
+        filter: drop-shadow(10px 10px  10px var(--clr)) drop-shadow(0 0 100px var(--clr));
+    }
+    .card:hover .circle .logo{
+        transform: scale(0);
+        transition-delay: 0s;
+    }
+    .card .product_img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%) scale(0) rotate(315deg);
+        height: 500px;
+        transition: 0.5s ease-in-out;
+    }
+    .card:hover .product_img{
+        transition-delay: 0.75s;
+        transform: translate(-50%,-50%) scale(1) rotate(30deg);
+        top: 55%;
+        left: 80%;
+        height: 400px;
+        width: 400px;
+        filter: drop-shadow(10px 10px  10px black) drop-shadow(0 0 100px black);
+    }
+    .card .content{
+        position:absolute;
+        width: 50%;
+        left: 20%;
+        padding: 20px 20px 20px 40px;
+        opacity: 0;
+        transition: 0.5s;
+        visibility: hidden;
+        
+    }
+    .card:hover .content{
+        transition-delay: 0.75s;
+        opacity: 1;
+        visibility: visible;
+        left: 0;
+    }
+    .card .content h2{
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 2.4em;
+        line-height: 1em;
+    }
+    .card .content p{
+        color: #fff;
+    }
+
+    #tit_empresa{
+        color:white;
+        filter: drop-shadow(0 0 5px var(--clr)) drop-shadow(0 0 5px var(--clr));
+    }
+
+
+    #iconos_redes{
+        color:white;
+        font-size:1vw;
+    }
+    #iconos_redes:hover{
+        color:var(--principal);
+        scale:1.5;
+    }
+</style>
+    <!-- Topbar Start -->
+    <div class="container-fluid d-none d-lg-block" >
+        <div class="row align-items-center bg-dark px-lg-12">
+        </div>  
+        <div class="row align-items-center bg-white py-0 px-lg-3" >
+            <div class="col-lg-8">
+                <a href="/signin/" class="navbar-brand p-0 d-none d-lg-block">
+                    <h1 class="m-0 display-4 text-uppercase text-primary">Grupo Alva<span class="text-secondary font-weight-normal"> Corporativo</span></h1>
+                </a>
+            </div>
+            <div class="col-lg-4 text-center text-lg-right" style="height: 5rem;">
+                <a href="/signin/"><img class="img-fluid"  src="{% static 'imagenes/GrupoAlva.png' %}" alt="Alvamex" style="height: 100%;"></a>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+    <!-- Navbar Start -->
+    <div id ="Navbar" class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="/signin/" class="nav-item nav-link">Inicio</a>
+                    <a href="#alvamex" class="nav-item nav-link">Alvamex</a>
+                    <a href="#diamante" class="nav-item nav-link">Diamante</a>
+                    <a href="#alvaenvases" class="nav-item nav-link">alvaenvases</a>
+                    <a href="#trade" class="nav-item nav-link">Trade Polymers</a>
+                    <a href="#" class="nav-item nav-link">Promociones</a>
+                    <a href="#footer_idx" class="nav-item nav-link">Contacto</a>
+                </div>
+                <div class="navbar-nav  py-0" style="width: 100%; max-width: 300px;">
+                    <!--<a  href="/bolsa_trabajo/" class="nav-item nav-link">BOLSA DE TRABAJO</a>    -->
+                    <a  href="/about_us/bolsa_trabajo/" class="nav-item nav-link"><i class="bi bi-file-text" style="font-size:2vh;"></i> BOLSA DE TRABAJO</a>          
+                </div>
+            </div>
+        </nav>
+    </div>
+    
+
+    <section id="scene">
+        <img src="{% static 'imagenes/parallax/mix-cold-colors-water.jpg' %}" id="splash">
+        <img src="{% static 'imagenes/parallax/colibri-1.png' %}" id="text">
+        <img src="{% static 'imagenes/parallax/TP-NEGRO.png' %}" id="baloon1">
+        <img src="{% static 'imagenes/parallax/alvamex.png' %}" id="baloon2">
+        <img src="{% static 'imagenes/parallax/diamante.png' %}" id="baloon3">
+        <img src="{% static 'imagenes/parallax/vastrox.png' %}" id="color1">
+        <img src="{% static 'imagenes/parallax/ae.png' %}" id="color2">
+        <!--
+        <img src="{% static 'imagenes/parallax/.png' %}" id="watergun1">
+        <img src="{% static 'imagenes/parallax/.png' %}" id="watergun2">
+        -->
+    </section>
+
+
+<script>
+    let splash = document.getElementById("splash")
+    let text = document.getElementById("text")
+    let baloon1 = document.getElementById("baloon1");
+    let baloon2 = document.getElementById("baloon2");
+    let baloon3 = document.getElementById("baloon3");
+    let color1 = document.getElementById("color1");
+    let color2 = document.getElementById("color2");
+    let watergun1 = document.getElementById("watergun1");
+    let watergun2 = document.getElementById("watergun2");
+
+    window.addEventListener("scroll", function(){
+        let value = window.scrollY;
+        text.style.top = value * -1 +'px';
+        baloon1.style.left = value * -5+'px';
+        baloon2.style.top = value * 5+'px';
+        baloon3.style.top = value * 5+'px';
+        color1.style.top = value * -5+'px';
+        color2.style.left = value * 5+'px';
+        watergun1.style.left = value * -0.75+'px';
+        watergun2.style.left = value * 0.75+'px';
+    })
+</script>
+
+    <!-- Navbar End -->
+    <div class="container-fluid bg-dark">
+        <div id="alvamex" class="container-fluid row mt-2 bg-none">
+            <div class="col-lg-6 allign-center">
+                <div class="card allign-center">
+                    <div class="circle" style="--clr:#0491f6; --bg:#0428f5ae;">
+                        <img src="{% static 'imagenes/alv_blancas.png' %}" alt="" class="logo">
+                    </div>
+                    <div class="content">
+                        <h2>Alvamex</h2>
+                        <p>Alvamex Pinturas cumple 30 años en el mercado mexicano con gran aceptación y crecimiento, toda la familia Alvamex se congrega en la Planta de San Martín de las Pirámides.</p>
+                        <a class="btn btn-dark" href="#">Pagina Oficial</a>
+                    </div>
+                    <img src="{% static 'imagenes/Alvacril19L.png' %}" alt="" class="product_img" style="width: 50%; height: 70%; margin-left: -7%;">
+                </div>
+            </div>
+            <div class="col-lg-6 bg-none p-5">
+                <h1 class="text-center text-md" id="tit_empresa" style="--clr:#0491f6">
+                    Alvamex Química
+                </h1>
+                <h2 style="color: #fff;"> Misión:</h2><p>Nuestra misión es participar en todos los sectores de recubrimientos, trasformando los espacios de nuestros clientes con soluciones de pinturas innovadoras y sostenibles, promoviendo un entorno colorido y saludable para todos. </p>
+                <h2 style="color: #fff;"> Visión:</h2><p>Expandir nuestro mercado de pinturas y recubrimientos, destacando por nuestra excelente calidad y servicio. Buscamos constantemente innovar y mejorar nuestros productos para contribuir al bienestar de nuestros clientes y al desarrollo sostenible, consolidando así nuestra posición como referentes en la industria. </p>
+                <h2 style="color: #fff;"> Valores:</h2><p>Realizamos nuestras funciones y deberes con calidad y esmero, para cumplir y superar las expectativas de nuestros clientes.
+
+                    <li><b>COLABORACIÓN:</b> Unimos esfuerzos aportando lo mejor de nosotros mismos para alcanzar los mejores resultados.</li>
+                    <li><b> INTEGRIDAD:</b> Practicamos para ser personas honestas, responsables y respetuosas.</li>
+                    <li><b>EXCELENCIA:</b> Orientamos los esfuerzos hacia la perfección y la competitividad.</li>
+                    <li><b>RESPONSABILIDAD SOCIAL:</b> Buscamos constantemente el bien común, a través del cuidado al medio ambiente y el cumplimiento con las leyes.</li></p>
+            </div>
+        </div>
+        <div id="trade" class="container-fluid row  bg-none">
+            <div class="col-lg-6 bg-none p-5">
+                <h2 style="color: #fff;"> Misión:</h2><p style="color: #34d019;">Generar experiencias satisfactorias a nuestros clientes, proporcionando con nuestros productos bienestar y soluciones integrales, para posicionarnos en el mercado nacionañ y lograr la rentabilidad esperada del negocio. </p>
+                <h2 style="color: #fff;"> Visión:</h2><p style="color: #34d019;">Ser una empresa líder y distinguida en pinturas y recubrimientos, transformandonos y comprometiendonos con nuestros clientes a otorgar productos de alta calidad y excelente servicio. </p>
+                <h2 style="color: #fff;"> Valores:</h2><pstyle="color: #34d019;">
+                    <li style="color: #34d019;"><b>HONESTIDAD:</b> Siempre hablo con la verdad uso los recursos de la empresa en forma eficiente y hago las cosas bien desde la primera vez.</li>
+                    <li style="color: #34d019;"><b>TRABAJO EN EQUIPO:</b> Colaboramos hombro a hombro para el logro de nuestros objetivos confiamos y nos desafiamos a nosotros mismos.</li>
+                    <li style="color: #34d019;"><b>RESPETO:</b> Atiendo las solicitudes de mis compañeros los cuido y me comunico cortésmente, refuerza su autoestima y genera un ambiente motivador a mi alrededor.</li>
+                    <li style="color: #34d019;"><b>COMPROMISO:</b> Mejor todos los días el servico a nuestros cluentes, la calidad de nuestros productos y procesos a través de simplificarlos, innovarlos y mejorarlos.</li>
+                    <li style="color: #34d019;"><b>LIDERAZGO:</b> Nos comprometemos con nuestris colaboradores a inspirar motivar para el logro de nuestros objetivos.</li></p>
+            </div>
+            <div class="col-lg-6 bg-none p-5">
+                <div class="card allign-center">
+                    <div class="circle" style="--clr:#34d019; --bg:#049a0b;">
+                        <img src="{% static 'imagenes/LogoDiamante--.png' %}" alt="Diamante pinturas"  class="logo">
+                    </div>
+                    <div class="content">
+                        <h2>Diamante Pinturas</h2>
+                        <p>Con casi 30 años de experiencia, nuestra amplia gama de productos satisface las nececidades de profecionales y particulares. Nos destacamos por nuestra innovacion constante, compromiso con la sostenibilidad y un servicio al cliente excepcional.</p>
+                        <a class="btn btn-dark" href="#">Pagina Oficial</a>
+                    </div>
+                    <img src="{% static 'imagenes/DG-about us.png' %}" alt="DG-Esmalte" style="width: 40%; height: 60%; margin-left: -7%;" class="product_img">
+                </div>
+            </div>
+        </div>
+        <div  id="alvaenvases"  class="container-fluid row bg-none">
+            <div class="col-lg-6 allign-center">
+                <div class="card allign-center">
+                    <div class="circle" style="--clr:#f40d9a; --bg:#701f5fae;">
+                        <img src="{% static 'imagenes/ae_blancas.png' %}" alt="" class="logo">
+                    </div>
+                    <div class="content">
+                        <h2>Alva Envases</h2>
+                        <p>Nuestro principal producto que es la cubeta industrial de plástico con capacidad de 1, 4 y 19 litros; que son fabricadas en nuestras instalaciones con tecnología de punta y bajo estrictos procesos productivos.</p>
+                        <a class="btn btn-dark" href="#">Pagina Oficial</a>
+                    </div>
+                    <img src="{% static 'imagenes/cubetablanca19lt.png' %}" alt="" class="product_img" style="width: 50%; height: 70%; margin-left: -7%;">
+                </div>
+            </div>
+            <div class="col-lg-6 bg-none p-5">
+                <h1 class="text-center text-md" id="tit_empresa" style="--clr:#f40d9a;">
+                    Alva Envases
+                </h1>
+                <h2 style="color: #fff;"> Misión:</h2><p  style="color: #f40d9a;">Fabricar envases que permitan satisfacer las necesidades y expectativas de nuestras partes interesadas, proporcionando servicio y calidad a precios competitivos, teniendo como parte fundamental el desarrollo integral del personal y la utilización de material plástico reciclado para contribuir a la preservación del medio ambiente. </p>
+                <h2 style="color: #fff;"> Visión:</h2><p  style="color: #f40d9a;">Ser una empresa líder, competitiva, dinámica e innovadora con crecimiento continuo, solidez en el mercado nacional de envases optimizando los recursos existentes y fortaleciendo la gestión de las relaciones con nuestras partes interesadas. </p>
+                <h2 style="color: #fff;"> Valores:</h2><p  style="color: #f40d9a;">
+                    <li  style="color: #f40d9a;"><b>HONESTIDAD:</b> La integridad y la rectitud que nos distingue, actuar siempre con base en la verdad. </li>
+                    <li  style="color: #f40d9a;"><b>RESPONSABILIDAD:</b> El cumplimiento de las obligaciones encomendadas.</li>
+                    <li  style="color: #f40d9a;"><b>SOLIDARIDAD:</b> Todos trabajando para el logro del mismo objetivo.</li>
+                    <li  style="color: #f40d9a;"><b>RESPETO:</b>Lo que debe distinguir nuestro trato con los demás.</li>
+                    <li  style="color: #f40d9a;"><b>SERVICIO:</b>La razón de ser de nuestra empresa.</li>
+                    <li  style="color: #f40d9a;"><b>PERSEVERANCIA:</b>Siempre hacia adelante.</li>
+                    <li  style="color: #f40d9a;"><b>LEALTAD:</b>Mantenernos dignos de la confianza.</li></P>  
+            </div>
+            <div id="trade" class="container-fluid row  bg-none">
+                <div class="col-lg-6 bg-none p-5">
+                    <h1 class="text-center text-md" id="tit_empresa" style="--clr:#ffc107">
+                        Trade Polymers
+                    </h1>
+                    <h2 style="color: #fff;"> Misión:</h2><p style="color: #ffc107;">Ofrecer al mercado de pinturas y recubrimientos soluciones de valor, con productos de la más alta calidad, ofreciendo los mejores precios, garantizando un servicio y disponibilidad de productos mediante una operación eficiente, segura y rentable. </p>
+                <h2 style="color: #fff;"> Visión:</h2><p style="color: #ffc107;">Ser una empresa en constante crecimiento y rentabilidad, que cubra las necesidades de nuestros clientes en cada operación de negocio asumiendo un rol de liderazgo en el mercado de resinas. </p>
+                <h2 style="color: #fff;"> Valores:</h2><p style="color: #ffc107;">Realizamos nuestras funciones y deberes con calidad y esmero, para cumplir y superar las expectativas de nuestros clientes.
+                    <li style="color: #ffc107;"><b>RESPETO:</b> Nos conducimos de manera correcta y cortés con nuestros clientes, colaboradores y proveedores.</li>
+                    <li style="color: #ffc107;"><b>HONESTIDAD:</b> Nos comportamos con integridad y apego a la verdad.</li>
+                    <li style="color: #ffc107;"><b>RESPONSABILIDAD:</b> Asumimos nuestros compromisos, buscando siempre cumplir con nuestras metas.</li>
+                    <li style="color: #ffc107;"><b>COMPROMISO:</b> Realizamos nuestras funciones y deberes con calidad y esmero, para cumplir ya superar las expectativas de nuestros clientes.</li></p>
+                </div>
+                <div class="col-lg-6 bg-none p-5">
+                    <div class="card allign-center">
+                        <div class="circle" style="--clr:#ffc107; --bg:#cca300;">
+                            <img src="{% static 'imagenes/LogoTrade blanco.png' %}" alt="" class="logo">
+                        </div>
+                        <div class="content">
+                            <h2>Trade Polymers</h2>
+                            <p>Fabricación, distribución y comercialización de resinas alquidales, emulsiones y derivados de brea para las industrias de pinturas, tintas
+                                y adhesivos.</p>
+                            <a class="btn btn-dark" href="#">Pagina Oficial</a>
+                        </div>
+                        <img src="{% static 'imagenes/tambos.png' %}" alt="" class="product_img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   <!-- Footer Start -->
+   <div id="footer_idx" class="container-fluid bg-dark pt-1 px-sm-3 px-md-5 mt-1 d-flex">
+    <div class="row py-4">
+        <div class="col-lg-4 col-md-12 mb-5 d-flex">
+            <div class="row align-items-center">
+                <div class="col-4 mb-3 ">
+                    <a href="#noticias_principales"><img style="width: 100%; height: 8vh;" src="{% static 'imagenes/diama_blancas.png'%}" alt="Diamante Pinturas"></a>
+                </div>
+                <div class="col-4 mb-3">
+                    <a href=""><img style="width: 100%; height: 8vh;" src="{% static 'imagenes/LogoTrade blanco.png'%}" alt="Trade Polymers"></a>
+                </div>
+                <div class="col-4 mb-3">
+                    <a href=""><img style="width: 100%; height: 8vh;" src="{% static 'imagenes/vastro-blanco.png'%}" alt="Vastro"></a>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-5">
+            <div class="text-center" style="color:white;">
+                <center><h5 class="mb-4 text-white text-uppercase font-weight-bold">Encuentranos en</h5></center>
+                <center><p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>Guadalajara #29, Colonia Constitución de 1917, Tlanepantla de Baz, Edo. de México C.P 54190</p></center>
+                <center><p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>55 5569 6433, 55 5569 6591</p></center>
+                <center><p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>atencionclientes@alvamex.com.mx</p></center>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 mb-5 d-flex">
+            <div class="row align-items-center">
+                <div class="col-4 mb-3">
+                    <a href="#noticias_principales"><img style="width: 100%; height: 7vh;" src="{% static 'imagenes/alv_blancas.png'%}" alt="Alvamex"></a>
+                </div>
+                <div class="col-4 mb-3">
+                    <a href=""><img style="width: 100%; height: 8vh;" src="{% static 'imagenes/LogoAlvaEnvases--.png'%}" alt="Alvaenvases"></a>
+                </div>
+                <div class="col-4 mb-3">
+                    <a href=""><img style="width: 100%; height: 8vh;" src="{% static 'imagenes/GrupoAlva.png'%}" alt="GrupoAlva"></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid px-sm-1 px-md-1 bg-dark mt-0" >
+    <p class="m-0 text-center" style="color: #fff; font-weight:600;">&copy; <span href="#">Copyright</span>. Todos los derechos reservados. 
+    Diseñado para <a style="color: #fff; font-weight:600;" id="copy_footer" href="https://www.alvamex.com.mx/">Grupo Alva "Pintando el Futuro"</a></p>
+</div>
+<!-- Footer End -->
+
+</body>
+<html>

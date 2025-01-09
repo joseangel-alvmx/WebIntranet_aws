@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escena Navideña en Three.js</title>
+  <style>
+    body { margin: 0; }
+        canvas { display: block; }
+  </style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+
+// Configuración básica de la escena
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Fondo rosado y luces ambientales
+scene.background = new THREE.Color(0xffc0cb);
+const ambientLight = new THREE.AmbientLight(0xffc1e0, 0.6); // Luz suave rosa
+const pointLight = new THREE.PointLight(0xff4d4d, 1);       // Luz intensa roja en el centro
+pointLight.position.set(5, 5, 5);
+scene.add(ambientLight, pointLight);
+
+const heartShape = new THREE.Shape();
+
+// Punto inicial en la base del corazón
+heartShape.moveTo(0, -1.5);
+
+// Curva izquierda del corazón
+heartShape.bezierCurveTo(-1.7, -3, -4, 0.6, 0, 3);
+
+// Curva derecha del corazón
+heartShape.bezierCurveTo(4, 0.6, 1.5, -3, 0, -1.5);
+
+// Malla de corazón
+const geometry = new THREE.ShapeGeometry(heartShape);
+const material = new THREE.MeshPhongMaterial({ color: 0xff6f61, side: THREE.DoubleSide });
+const heartMesh = new THREE.Mesh(geometry, material);
+heartMesh.position.set(0, 0, -10);
+heartMesh.rotation.z = Math.PI / 4;
+scene.add(heartMesh);
+
+// Crear corazones flotantes
+const hearts = [];
+for (let i = 0; i < 20; i++) {
+    const heartClone = heartMesh.clone();
+    heartClone.position.set((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20, Math.random() * -10 - 5);
+    heartClone.scale.setScalar(Math.random() * 0.5 + 0.5);
+    scene.add(heartClone);
+    hearts.push(heartClone);
+}
+
+// Animación
+function animate() {
+    requestAnimationFrame(animate);
+
+    // Rotación lenta de los corazones
+    hearts.forEach((heart, idx) => {
+        heart.rotation.z += 0.01 + idx * 0.0005;
+        heart.position.y += Math.sin(Date.now() * 0.001 + idx) * 0.005;
+    });
+
+    renderer.render(scene, camera);
+}
+
+animate();
+
+// Ajustar tamaño de ventana
+window.addEventListener('resize', () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+});
+
+</script>
+</body>
+</html>

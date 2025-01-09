@@ -1,0 +1,59 @@
+{% extends 'base2.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <h1 class="">Tareas</h1>
+    <a href="create/" class="btn btn-dark" style="float: right;"><i class="bi bi-plus-square-fill"></i> Nueva Tarea</a>
+</div>
+<div class="container-fluid" style="margin: auto;">
+    <table class="table" style="width: 100%; text-align: center; align-items:  center;">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Fecha Creación</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Importante</th>
+                <th scope="col">Usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tarea in tareas %}
+            <tr class="table-striped">
+                <th scope="row">{{tarea.id}}</th>
+                <td scope="row">{{tarea.title}}</td>
+                <td>{{tarea.creacion}}</td>
+                <td>{{tarea.descrpcion}}</td>
+                <td>{{tarea.importante}}</td>
+                <td>{{tarea.user}}</td>
+            </tr>
+        
+        
+        {% endfor %}
+    </table>
+
+         <!-- empresas section start -->
+         <div class="service_section layout_padding">
+            <div class="container-fluid">
+               <div class="row g-3">
+                  <div class="col-sm-12">
+                     <h1 class="service_taital">Vacantes Corporativas</h1>
+                  </div>
+               </div>
+               <div id="empresas" class="service_section_2">
+                  <div class="row">
+                     <div class="col-lg-3 col-sm-6">
+                        <div class="service_box_1">
+                           <h4 class="residential_text">Analista Contable</h4>
+                           <p class="service_text">Se solicita perfil contable para revision de cierres de caja para cedis y analisis de depositos</p>
+                        </div>
+                        <div class="readmore_bt"><a href="https://www.alvamex.com.mx/">Leer más</a></div>
+                     </div>                      
+                  </div>
+               </div>
+            </div>
+         </div>
+</div>
+
+{% endblock %}

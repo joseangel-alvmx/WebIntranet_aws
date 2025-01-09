@@ -1,0 +1,554 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Alvamex - Intranet News</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+
+
+    <!-- Favicon -->
+    <link href="{% static 'imagenes/GrupoALVA_2.png' %}" rel="icon">    
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Font Awesome -->
+
+    <link href="{% static 'imagenes/GrupoALVA_2.png'%}" rel="icon">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="{% static 'javasript/followers.js' %}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="{% static 'css/slick.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<style>
+    #iconos_redes{
+        color:white;
+        font-size:1vw;
+    }
+    #iconos_redes:hover{
+        color:var(--principal);
+        scale:1.5;
+    }
+</style>
+<script>
+    // Fondo oscuro para representar la noche
+    scene.background = new THREE.Color(0x0a0a23);
+  
+    // Configuración de partículas de nieve
+    const snowflakes = [];
+    const snowflakeGeometry = new THREE.SphereGeometry(0.05, 8, 8);
+    const snowflakeMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+  
+    for (let i = 0; i < 200; i++) {
+      const snowflake = new THREE.Mesh(snowflakeGeometry, snowflakeMaterial);
+      snowflake.position.set(
+        (Math.random() - 0.5) * 20,
+        Math.random() * 10 + 5,
+        (Math.random() - 0.5) * 20
+      );
+      scene.add(snowflake);
+      snowflakes.push(snowflake);
+    }
+  
+    // Posición inicial de la cámara
+    camera.position.z = 10;
+  
+    // Animación
+    function animate() {
+      requestAnimationFrame(animate);
+  
+      // Caída de nieve
+      snowflakes.forEach(snowflake => {
+        snowflake.position.y -= 0.05;
+        if (snowflake.position.y < -2) {
+          snowflake.position.y = Math.random() * 10 + 5;
+        }
+      });
+      renderer.render(scene, camera);
+    }
+  
+    animate();
+  
+    // Ajuste de tamaño en caso de cambiar la ventana
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+  </script>
+    <!-- Topbar Start -->
+    <div class="container-fluid d-none d-lg-block">
+        <div class="row align-items-center bg-dark px-lg-12">
+            <div class="col-lg-7">
+                <div class="col-lg-12 text-left d-none d-md-block">
+                    <nav class="navbar navbar-expand-sm bg-dark p-0">
+                        <ul class="navbar-nav ml-auto mr-n2">
+                            <li class="nav-item">
+                                <a id="iconos_redes" class="nav-link text-body" target="blank_" href="https://www.tiktok.com/@alvamexpinturasoficial?_t=8pK758Jln3F&_r=1"><i id="iconos_redes" class="bi bi-tiktok"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="iconos_redes" class="nav-link text-body" target="blank_" href="https://www.facebook.com/Alvamex"><i id="iconos_redes" class="bi bi-facebook"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="iconos_redes" class="nav-link text-body" target="blank_" href="https://www.linkedin.com/company/alvamex/"><i id="iconos_redes" class="bi bi-linkedin"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="iconos_redes" class="nav-link text-body" target="blank_" href="https://www.instagram.com/alvamex_oficial/?hl=es"><i id="iconos_redes" class="bi bi-instagram"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="iconos_redes" class="nav-link text-body" target="blank_" href="https://www.youtube.com/@alvamexpinturas3301"><i id="iconos_redes" class="bi bi-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center bg-white py-0 px-lg-3" >
+            <div class="col-lg-8">
+                <a href="/alvamex/" class="navbar-brand p-0 d-none d-lg-block">
+                    <h1 class="m-0 display-4 text-uppercase text-primary">Intranet<span class="text-secondary font-weight-normal">News</span></h1>
+                </a>
+            {% if messages %}
+   
+                {% for message in messages %}
+                    <h3>{{ message }}</h3>
+                {% endfor %}
+            {% endif %}
+            </div>
+            <div class="col-lg-4 text-center text-lg-right" style="height: 7rem;">
+                <a href="https://www.alvamex.com.mx/"><img class="img-fluid" src="{% static 'imagenes/alvamex.png' %}" alt="Alvamex" style="height: 100%;"></a>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div id ="Navbar" class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
+            <a href="index.html" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-4 text-uppercase text-primary">Intranet<span class="text-white font-weight-normal">News</span></h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="/alvamex/" class="nav-item nav-link">Inicio</a>
+                    <a href="/promociones/" class="nav-item nav-link">Promociones</a>
+                    <a href="#ultimasnoticias" class="nav-item nav-link">Noticias Recientes</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Modulos</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="/universidad/" class="dropdown-item">Universidad</a>
+                            <a href="/cedis/" class="dropdown-item">Ubicación de Cedis</a>
+                            <a href="/procesos/" class="dropdown-item">Procesos y Politicas</a>
+                        </div>
+                    </div>
+                    <a href="#footer_idx" class="nav-item nav-link">Contacto</a>
+                </div>
+                <div class="navbar-nav  py-0" style="width: 100%; max-width: 300px;">
+                    {% if user.is_authenticated %}
+                    <a id="cerrar_sesion" href="/logout" class="nav-item nav-link">CERRAR SESIÓN</a>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+
+    <!-- Main News Slider Start -->
+    <div class="container-fluid" id="principales">
+        <div class="row">
+            <div class="col-lg-7 px-0">
+                <div  class="carousel slide" data-bs-ride="carousel" style="height: 500px; overflow:hidden;">
+                    <div class="carousel-inner" style="height: 500px;">
+                        {% for principal in principales %} {% if principal.imagen%}
+                        <div class="carousel-item active" style="height: 500px;">
+                            <img class="img-fluid h-100 w-100" src="{{principal.imagen.url}}" alt="{{principal.titulo}}" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-dark text-uppercase font-weight-semi-bold p-2 mr-2"
+                                        href="#" data-bs-toggle="modal" data-bs-target="#exampleModal{{principal.id}}"> Noticia
+                                    </a>
+                                </div>
+                                <a  href="#exampleModal{{principal.id}}" data-bs-toggle="modal" data-bs-target="#exampleModal{{principal.id}}" class="h6 m-0 text-white bg-dark p-1 text-uppercase font-weight-semi-bold">{{principal.titulo}}</a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    
+                </div>
+                <!-- Modales carusel -->
+                {% for principal in principales %} {% if principal.imagen %}
+                <div class="modal fade" id="exampleModal{{principal.id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{principal.id}}" aria-hidden="true" style="width:100%; height:100%;">
+                    <div class="modal-dialog modal-lg" style="background-color: #111111; color: #fff;">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel{{principal.id}}" style="color: #fff; text-align: center;">{{principal.titulo}}</h5>
+                                <button type="button" style="color: #fff;" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <img class="img-fluid w-100 "  src="{{principal.imagen.url}}"  style="object-fit: fill;">
+                            <div class="modal-body">
+                                {{principal.descripcion}}
+                                <br>
+                                <p>{{principal.fecha_noticia}}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+            <div class="col-lg-5 px-0">
+                <div class="row mx-0">
+                    {% for secundaria in secundarias %}
+                    <div class="col-md-6 px-0">
+                        <div class="position-relative overflow-hidden" style="height: 250px;">
+                            <img class="img-fluid w-100 h-100" src="{{secundaria.imagen.url}}" style="object-fit: cover;">
+                            <div class="overlay">
+                                <div class="mb-2">
+                                    <a class="badge badge-dark text-uppercase font-weight-semi-bold p-2 mr-2"
+                                    href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2{{secundaria.id}}"> Noticia</a>
+                                </div>
+                                <a  href="#" data-bs-toggle="modal" data-bs-target="#exampleModal2{{secundaria.id}}" class="h6 m-0 text-white bg-dark p-1 text-uppercase font-weight-semi-bold">{{secundaria.titulo}}</a>
+                            </div>
+                        </div>
+                    </div>          
+                    <div class="modal fade" id="exampleModal2{{secundaria.id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{secundaria.id}}" aria-hidden="true" style="height: 100%; weight: 100%;">
+                        <div class="modal-dialog modal-lg" style="background-color: #111111; color: #fff; ">
+                            <div class="modal-content bg-dark">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel{{secundaria.id}}" style="color: #fff; text-align: center;">{{secundaria.titulo}}</h5>
+                                    <button type="button" style="color: #fff;" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <img class="img-fluid w-100 "src="{{secundaria.imagen.url}}" style="object-fit: fill;">
+
+                                <div class="modal-body d-block">
+
+                                    {{secundaria.descripcion}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+    <!-- Main News Slider End -->
+
+
+    <!-- Boletin Inicio -->
+    <div class="container-fluid bg-dark py-3 mb-3">
+        <div class="container">
+            <div class="row align-items-center bg-dark">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between">
+                       
+                        <div class="position-relative d-inline-flex align-items-center ml-3"
+                            style="width: calc(100% - 170px); padding-right: 90px;">
+                            <div class="text-truncate"><a class="btn text-white text-uppercase font-weight-semi-bold">Descarga aqui el bolentin del mes! Enterate de mas detalles</a>
+                            </div>
+                        </div>
+                        {% for boletin in boletines %}
+                            <a style="margin-right:1%; padding:1%;color:black;" href="{{boletin.boletin.url}}" target="_blank" class="btn bg-primary text-center font-weight-medium py-2 text-uppercase " style=" width: 170px;">{{boletin.nombre_planta}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Boletin Final -->
+
+
+    
+    <!-- News With Sidebar Start -->
+    <div id="ultimasnoticias" class="container-fluid py-3 mb-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-title">
+                                <h4 class="m-0 text-uppercase font-weight-bold">Ultimas Noticias</h4>
+                            </div>
+                        </div>
+                        {% for relevante in relevantes %}
+                        <div class="col-lg-6">
+                            <div class="position-relative mb-3">
+                                <img class="img-fluid w-100" src="{{relevante.imagen.url}}" style="object-fit: cover; height: 40vh">
+                                <div class="bg-white border border-top-0 p-4 overflow-auto" style="height:30vh;">
+                                    <div class="mb-2">
+                                        <a class="badge badge-dark text-uppercase font-weight-semi-bold p-2 mr-2"
+                                            href="">Noticia</a>
+                                        <a class="text-body" href=""><small style="color:black; font-weight:600;">{{relevante.fecha_noticia}}</small></a>
+                                    </div>
+                                    <p class="h4 d-block mb-3 text-secondary text-uppercase font-weight-bold">{{relevante.titulo}}</p>
+                                    <p class="m-0">{{relevante.descripcion}}</p>
+                                </div>
+                                <div class="d-flex justify-content-center bg-dark  p-3">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle mr-2 bg-white" src="{% static 'imagenes/user.png' %}" width="40" height="40" alt="noticia-{{relevante.user.first_name}}">
+                                        <small style="color:white; font-weight:600;">{{relevante.user.first_name}} {{relevante.user.last_name}} <br>{{relevante.user.email}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <!-- Redes Sociales Inicio -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">Redes Sociales</h4>
+                        </div>
+                        <div class="bg-white border border-top-0 p-3">
+                            <a href="https://www.facebook.com/Alvamex" target="_blank"class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+                                <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span id="followers">Pinturas Alvamex</span>
+                            </a>
+                            <a href="https://www.tiktok.com/@alvamexpinturasoficial?_t=8pK758Jln3F&_r=1 " target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #01182b;">
+                                <i class="fab fa-tiktok text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">Alvamex Pinturas Oficial</span>
+                            </a>
+                            <a href="https://www.linkedin.com/company/alvamex/" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #0185AE;">
+                                <i class="fab fa-linkedin-in text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">ALVAMEX Pinturas</span>
+                            </a>
+                            <a href="https://www.instagram.com/alvamex_oficial/?hl=es" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #C8359D;">
+                                <i class="fab fa-instagram text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">alvamex_oficial</span>
+                            </a>
+                            <a href="https://www.youtube.com/@alvamexpinturas3301" target="_blank" class="d-block w-100 text-white text-decoration-none mb-3" style="background: #DC472E;">
+                                <i class="fab fa-youtube text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span class="font-weight-medium">Alvamex Pinturas</span>
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=100083470983876" target="_blank"class="d-block w-100 text-white text-decoration-none mb-3" style="background: #39569E;">
+                                <i class="fab fa-facebook-f text-center py-4 mr-3" style="width: 65px; background: rgba(0, 0, 0, .2);"></i>
+                                <span id="followers">Reclutamiento Alvamex</span>
+                            </a>
+        
+                        </div>
+                    </div>
+                    <!-- Redes Sociales Fin -->
+
+                    <!-- Anuncios inicio-->
+                    <div class="mb-3">
+                    {% for anuncio in anuncios %}
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">{{anuncio.titulo}}</h4>
+                        </div>
+                        <div class="bg-white text-center border border-top-0 p-3" style="height:60vh">
+                              <a href=""><img class="img-fluid h-100 w-75" src="{{anuncio.imagen.url}}" alt="{{anuncio.titulo}}"></a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!-- Anuncios fin -->
+
+                    <!-- Popular News Start -->
+                    <div class="mb-3">
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">¡CUMPLEAÑOS!</h4>
+                        </div>
+                        <div class="border-none p-1 bg-white overflow-auto" style="height:40vh;">
+                             {% for nac in nacs %}
+                            <div class="d-flex align-items-center mb-3" style="height: 110px;background:#f2faff;">
+                                <img class="img-fluid" src="{{nac.foto.url}}" alt="{{nac.nombres}}" style="height:13vh; width:8vw;">
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border-none">
+                                    <h2 class="h5 m-0 text-secondary text-uppercase text-center font-weight-bold p-1" style="font-size: 1rem;">¡FELIZ CUMPLEAÑOS {{nac.nombres}}!</h2>
+                                    <div class="mb-1">
+                                        <h3 class="text-body text-center"><small style="color:black; font-weight:600; font-size: 1rem;">{{nac.fecha_nacimiento}}</small></h3>
+                                    </div>
+                                    <!-- Botón para abrir el modal -->
+                                    <button class="badge badge-dark text-uppercase text-center font-weight-semi-bold p-1 mr-2"
+                                            style="width:40%; margin-left:30%" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#nacmodal{{nac.id}}" 
+                                            data-bs-usuario-id="nacmodal{{ nac.id }}">
+                                        Enviar Felicitación
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="nacmodal{{nac.id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{nac.id}}" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" style="background-color: #111111; color: #fff;">
+                                    <div class="modal-content bg-dark">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel{{nac.id}}" style="color: #fff; text-align: center;">{{nac.nombres}} 	&#127880; &#127881;
+                                                ¡Muchas Felicidades! &#127873; 	&#127874;</h5>
+                                            <button type="button" style="color: #fff;" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <img class="img-fluid w-100 " src="{{nac.foto.url}}" alt="{{nac.nombres}} " style="object-fit: cover; height: 50vh;">
+                                        <div class="modal-body">
+                                            <form method="POST" action="{% url 'enviar_felicitacion' %}">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="usuario_id" id="usuario_id">
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <input type="hidden" name="recipientName" value="{{nac.nombres}}">
+                                                        <input type="hidden" name="recipientEmail" value="{{nac.correo}}">
+                                                        <label for="mensaje">Mensaje de Felicitación a {{nac.nombres}}</label>
+                                                        <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required>¡Feliz cumpleaños {{nac.nombres}}!</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-primary">Enviar Felicitación</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                        <div class="section-title mb-0">
+                            <h4 class="m-0 text-uppercase font-weight-bold">¡ANIVERSARIOS!</h4>
+                        </div>
+                        <div class="bg-white border-none p-1 overflow-auto" style="height:40vh;">
+                            {% for aniv in anivs %}
+                            <div class="d-flex align-items-center mb-3" style="height: 110px;background:#f2faff;">
+                                <img class="img-fluid" src="{{aniv.foto.url}}" alt="{{aniv.nombres}}" style="height:13vh; width:8vw;">
+                                <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border-none">
+                                    <h2 class="h5 m-0 text-secondary text-uppercase text-center font-weight-bold p-0 "style="font-size: 1rem;">	 ¡GRACIAS POR UN AÑO MAS CON NOSOTROS {{aniv.nombres}}! </h2>
+                                    <div class="mb-1">
+                                        <h3 class="text-body text-center"><small style="color:black; font-weight:600; font-size: 1rem;">{{aniv.fecha_ingreso}}</small></h3>
+                                    </div>
+                                    <!-- Botón para abrir el modal -->
+                                    <button class="badge badge-dark text-uppercase text-center font-weight-semi-bold p-1 mr-2"
+                                            style="width:40%; margin-left:30%" 
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#anivmodal{{aniv.id}}" 
+                                            data-bs-usuario-id="anivmodal{{ aniv.id }}">
+                                        Enviar Felicitación
+                                    </button>
+                                </div>
+                            </div>
+
+                                <div class="modal fade" id="anivmodal{{aniv.id}}" tabindex="-1" aria-labelledby="anivmodal{{aniv.id}}" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" style="background-color: #111111; color: #fff;">
+                                        <div class="modal-content bg-dark">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="anivmodal{{aniv.id}}" style="color: #fff; text-align: center;"> &#127881;{{aniv.nombres}} ¡Un año mas! &#127870;</h5>
+                                                <button type="button" style="color: #fff;" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <img class="img-fluid w-100 " src="{{aniv.foto.url}}" alt="{{aniv.nombres}} " style="object-fit: cover; height: 50vh;">
+                                            <div class="modal-body">
+                                                <form method="POST" action="{% url 'aniversario' %}">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="usuario_id" id="usuario_id">
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <input type="hidden" name="recipientName" value="{{aniv.nombres}}">
+                                                            <input type="hidden" name="recipientEmail" value="{{aniv.correo}}">
+                                                            <label for="mensaje">Mensaje de Felicitación a {{aniv.nombres}}</label>
+                                                            <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required>¡Feliz Aniversario {{aniv.nombres}}!</textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                        <button type="submit" class="btn btn-primary">Enviar Felicitación</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- News With Sidebar End -->
+
+
+<!-- Footer Start -->
+<div id="footer_idx" class="container-fluid bg-dark pt-1 px-sm-3 px-md-5 mt-1">
+    <div class="row py-4">
+        <div class="col-lg-4 col-md-12 mb-0">
+            <h4 class="section-title bg-dark mb-4 text-uppercase font-weight-bold" style="border-top:none;border-bottom:none;border-right:none;">Galeria</h4>
+            <div class="row">
+                {% for principal in principales %}
+                <div class="col-6 mb-3">
+                    <a href="#principales"><img style="width: 100%; height: 10vh;" src="{{principal.imagen.url}}" alt="{{principal.titulo}}"></a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-0">
+            <h4 class="section-title bg-dark mb-4 text-uppercase font-weight-bold" style="border-top:none;border-bottom:none;border-right:none;">Encuentranos en</h4>
+            <p class="font-weight-medium text-white"><i class="fa fa-map-marker-alt mr-2"></i>Guadalajara #29,Col. Constitución de 1917, Tlanepantla, Edo. de México C.P 54190</p>
+            <p class="font-weight-medium text-white"><i class="fa fa-phone-alt mr-2"></i>55 5569 6433, 55 5569 6591</p>
+            <p class="font-weight-medium text-white"><i class="fa fa-envelope mr-2"></i>atencionclientes@alvamex.com.mx</p>
+            <h6 class="mt-4 mb-3  text-uppercase font-weight-bold">Siguenos</h6>
+            <div class="d-flex justify-content-start">
+                <a id="iconos_redes" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.tiktok.com/@alvamexpinturasoficial?_t=8pK758Jln3F&_r=1"><i class="fab fa-tiktok"></i></a>
+                <a id="iconos_redes" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.facebook.com/Alvamex"><i class="fab fa-facebook-f"></i></a>
+                <a id="iconos_redes" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.linkedin.com/company/alvamex/"><i class="fab fa-linkedin-in"></i></a>
+                <a id="iconos_redes" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.instagram.com/alvamex_oficial/"><i class="fab fa-instagram"></i></a>
+                <a id="iconos_redes" class="btn btn-lg btn-secondary btn-lg-square" href="https://www.youtube.com/@alvamexpinturas3301"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 mb-0">
+            <div class="mb-0 bg-dark">
+                <h4 class="section-title bg-dark mb-4 text-uppercase font-weight-bold" style="border-top:none;border-bottom:none;border-right:none;">Noticias Pasadas</h4>
+            </div>
+            <div class="bg-dark text-center p-1">
+                <p>¿Te perdiste de algo? Tranquilo, acá te lo enviamos</p>
+                <form method="POST" action="{% url 'enviar_notificacion' %}">
+                    {% csrf_token %}
+                    <div class="input-group mb-0" style="width: 100%;">
+                        <input type="text" name="consulta" class="form-control form-control-lg" placeholder="¿Qué noticia buscas?" alt="{{user.username}}" required>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary font-weight-bold px-3">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        
+<div class="container-fluid py-0 px-sm-3 px-md-5 bg-dark" style="">
+    <p class="m-0 text-center" style="color: #fff; font-weight:600;">&copy; <span href="#">Copyright</span>. Todos los derechos reservados. 
+    Diseñado para <a style="color: #fff; font-weight:600;" id="copy_footer" href="https://www.alvamex.com.mx/">Grupo Alva "Pintando el Futuro"</a></p>
+</div>
+<!-- Footer End -->
+
+</body>
+
+</html>

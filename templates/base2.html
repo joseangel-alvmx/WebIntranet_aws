@@ -1,0 +1,94 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="{% static 'imagenes/GrupoALVA_2.png'%}" rel="icon">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Alva</title>
+
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   <link href="{% static 'css/slick.css' %}" rel="stylesheet">
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+<nav>
+    <div class="container-fluid d-none d-lg-block">
+        <div class="row align-items-center bg-dark px-lg-12">
+            <div class="col-lg-7">
+                <div class="col-lg-12 text-left d-none d-md-block">
+                    <nav class="navbar navbar-expand-sm bg-dark p-0">
+                        <ul class="navbar-nav ml-auto mr-n2">
+                            <li class="nav-item">
+                                <a class="nav-link text-body" href="#"><i class="bi bi-twitter-x"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-body" href="#"><i class="bi bi-facebook"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-body" href="#"><i class="bi bi-linkedin"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-body" href="#"><i class="bi bi-instagram"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-body" href="#"><i class="bi bi-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center bg-white py-0 px-lg-3" >
+            <div class="col-lg-4">
+                <a href="/tareas/" class="navbar-brand p-0 d-none d-lg-block">
+                    <h1 class="m-0 display-4 text-uppercase text-primary">Intranet<span class="text-secondary font-weight-normal">News</span></h1>
+                </a>
+            </div>
+            <div class="col-lg-8 text-center text-lg-right" style="height: 5rem;">
+                <a href="https://www.alvamex.com.mx/"><img class="img-fluid" src="{% static 'imagenes/alvamex.png' %}" alt="empresa, alvamex" style="height: 100%;"></a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
+            <a href="/alvamex/" class="navbar-brand d-block d-lg-none">
+                <h1 class="m-0 display-4 text-uppercase text-primary">Intranet<span class="text-white font-weight-normal">News</span></h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+                <div class="navbar-nav mr-auto py-0">
+                    <a href="/alvamex/" class="nav-item nav-link">Inicio</a>
+                    <a href="/promociones/" class="nav-item nav-link">Promociones</a>
+                    <a href="#ultimasnoticias" class="nav-item nav-link">Noticias Recientes</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Modulos</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a href="/universidad/" class="dropdown-item">Universidad</a>
+                            <a href="/cedis/" class="dropdown-item">Ubicación de Cedis</a>
+                            <a href="/procesos/" class="dropdown-item">Procesos y Politicas</a>
+                        </div>
+                    </div>
+                    <a href="#footer_idx" class="nav-item nav-link">Contacto</a>
+                </div>
+                <div class="navbar-nav  py-0" style="width: 100%; max-width: 300px;">
+                    {% if user.is_authenticated %}
+                    <a id="cerrar_sesion" href="/logout" class="nav-item nav-link">CERRAR SESIÓN</a>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

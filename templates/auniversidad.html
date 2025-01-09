@@ -1,0 +1,302 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Universidad - Alvaenvases</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+
+
+    <!-- Favicon -->
+    <link href="{% static 'imagenes/GrupoALVA_2.png' %}" rel="icon">    
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+
+    <!-- Font Awesome -->
+
+    <link href="{% static 'imagenes/GrupoALVA_2.png'%}" rel="icon">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="{% static 'css/slick.css' %}" rel="stylesheet">
+    </head>
+<body>
+    <style>
+        :root{
+            --principal: #f40d9a;
+            --sombra: #009ce4;
+        }
+        #iconos_redes{
+            color:white;
+            font-size:1vw;
+        }
+        #iconos_redes:hover{
+            color:var(--principal);
+            scale:1.5;
+        }
+        body {
+
+            background-image: url("{% static 'imagenes/u_alvamex.png' %}");
+            background-repeat: no-repeat;
+            background-size: 60vw 80vh;
+            background-position: 20vw 20vh;
+            background-position: fixed;
+            overflow-x: hidden;
+        }
+        #container {
+            width:100%;
+            display: grid;
+            align-content: center;
+            gap: 3%;
+            padding: 2vw;
+            margin-left:0%;
+
+        }
+        .card-modal {
+            background-color: #fff;
+            border-radius: 10px;
+            
+            padding: 5px 20px 13px 20px;
+            height: 40vh;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            margin: 2%;
+            transition:1s;
+            scale:0.9;
+        }
+        .card-modal:hover{
+            border: groove 5px red;
+            box-shadow: 0 5px 15px white;
+            scale:1;
+        }
+        .card-modal img {
+            max-width: 100%;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+        .card-modal p {
+            font-size: 14px;
+            color: #333;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+          width: 85%;
+          height: 90%;
+          position: relative;
+          margin: 3% auto;
+          padding: 5px 20px 13px 20px;
+          border-radius: 10px;
+          background: none;
+          background: -moz-linear-gradient(#fff, #999);
+          background: -webkit-linear-gradient(#fff, #999);
+          background: -o-linear-gradient(#fff, #999);
+          -webkit-transition: opacity 400ms ease-in;
+          -moz-transition: opacity 400ms ease-in;
+          transition: opacity 400ms ease-in;
+        }
+        .close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+
+    #iconos_redes{
+        color:white;
+        font-size:1vw;
+    }
+    #iconos_redes:hover{
+        color:var(--principal);
+        scale:1.5;
+    }
+    #ficha_curso:hover{
+        text-decoration:none;
+    }
+        
+    </style>
+         
+<!-- Topbar Start -->
+<div class="container-fluid d-none d-lg-block">
+    <div class="row align-items-center bg-dark px-lg-12">
+        <div class="col-lg-7">
+            <div class="col-lg-12 text-left d-none d-md-block">
+                <nav class="navbar navbar-expand-sm bg-dark p-0">
+                    <ul class="navbar-nav ml-auto mr-n2">
+                        <li class="nav-item">
+                            <a id="iconos_redes" class="nav-link text-body" target="blank_" href="https://www.tiktok.com/@alvamexpinturasoficial?_t=8pK758Jln3F&_r=1"><i id="iconos_redes" class="bi bi-tiktok"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="iconos_redes" class="nav-link text-body" target="blank_" href="https://www.facebook.com/Alvamex"><i id="iconos_redes" class="bi bi-facebook"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="iconos_redes" class="nav-link text-body" target="blank_" href="https://www.linkedin.com/company/alvamex/"><i id="iconos_redes" class="bi bi-linkedin"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="iconos_redes" class="nav-link text-body" target="blank_" href="https://www.instagram.com/alvamex_oficial/?hl=es"><i id="iconos_redes" class="bi bi-instagram"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="iconos_redes" class="nav-link text-body" target="blank_" href="https://www.youtube.com/@alvamexpinturas3301"><i id="iconos_redes" class="bi bi-youtube"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-center bg-white py-0 px-lg-3" >
+        <div class="col-lg-8">
+            <a href="/alvaenvases/" class="navbar-brand p-0 d-none d-lg-block">
+                <h1 class="m-0 display-4 text-uppercase text-primary">Universidad<span class="text-secondary font-weight-normal"> Alvaenvases</span></h1>
+            </a>
+        {% if messages %}
+
+            {% for message in messages %}
+                <h3>{{ message }}</h3>
+            {% endfor %}
+        {% endif %}
+        </div>
+        <div class="col-lg-4 text-center text-lg-right" style="height: 7rem;">
+            <a href="https://www.alvaenvases.com.mx/"><img class="img-fluid" src="{% static 'imagenes/LogoAlvaEnvases.jpg' %}" alt="Alvaenvases" style="height: 100%;"></a>
+        </div>
+    </div>
+</div>
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<div id ="Navbar" class="container-fluid p-0">
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
+        <a href="index.html" class="navbar-brand d-block d-lg-none">
+            <h1 class="m-0 display-4 text-uppercase text-primary">Universidad<span class="text-white font-weight-normal"></span></h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+            <div class="navbar-nav mr-auto py-0">
+                <a href="/alvaenvases/" class="nav-item nav-link">Inicio</a>
+                <a href="/alvaenvases/aprom/" class="nav-item nav-link">Promociones</a>
+                <a href="#ultimasnoticias" class="nav-item nav-link">Noticias Recientes</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Modulos</a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="/alvaenvases/auniversidad/" class="dropdown-item">Universidad</a>
+                        <a href="/alvaenvases/acedis/" class="dropdown-item">Ubicación de Cedis</a>
+                        <a href="/alvaenvases/aprocesos/" class="dropdown-item">Procesos y Politicas</a>
+                    </div>
+                </div>
+                <a href="#footer_idx" class="nav-item nav-link">Contacto</a>
+                <a href="http://175.168.40.30/Induccion.html" target="_blank" class="nav-item nav-link">MBA3 University</a>
+            </div>
+            <div class="navbar-nav  py-0" style="width: 100%; max-width: 300px;">
+                {% if user.is_authenticated %}
+                <a id="cerrar_sesion" href="/logout" class="nav-item nav-link">CERRAR SESIÓN</a>
+                {% endif %}
+                
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Navbar End -->
+<div class="container-fluid text-center mt-1 bg-none">
+    <div class="container-fluid   p-2" id="container">
+        <h1>DOCUMENTOS - CURSOS</h1>
+        <div class="row g-3">
+            {% for curso in cursos %} {% if curso.imagen %}
+                <div class="col-lg-3 col-md-4 col-sm-6">  
+                    <a href="{{curso.archivo.url}}"target="_blank" id="ficha_curso">                  
+                        <div class="card-modal" >
+
+                            <img src="/static/imagenes/universidad alvamex/{{curso.imagen}}.png" alt="{{curso.empresa_curso}}" style="width: 100%; height: 20vh;">
+                            <h3>{{curso.curso}} - {{curso.empresa_curso}}</h3>
+                            <p>{{curso.descripcion}}</p>
+                        </div>
+                    </a>
+                </div>
+                {% endif %}
+                <!-- Modal 1 -->
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Footer Start -->
+<div id="footer_idx" class="container-fluid bg-dark pt-1 px-sm-3 px-md-5 mt-1">
+<div class="row py-4">
+    <div class="col-lg-4 col-md-12 mb-0">
+        <h4 class="section-title bg-dark mb-4 text-uppercase font-weight-bold" style="border-top:none;border-bottom:none;border-right:none;">Galeria</h4>
+        <div class="row">
+            <div class="col-6 mb-3">
+                <a href="#principales"><img style="width: 100%; height: 10vh;" src="{% static 'imagenes/LogoAlvaenvases--.png' %}" alt="Grupo Alva"></a>
+            </div>
+            <div class="col-6 mb-3">
+                <a href="#principales"><img style="width: 100%; height: 10vh;" src="{% static 'imagenes/LogoAlvaenvases--.png' %}" alt="Grupo Alva"></a>
+            </div>
+            <div class="col-6 mb-3">
+                <a href="#principales"><img style="width: 100%; height: 10vh;" src="{% static 'imagenes/LogoAlvaenvases--.png' %}" alt="Grupo Alva"></a>
+            </div>
+            <div class="col-6 mb-3">
+                <a href="#principales"><img style="width: 100%; height: 10vh;" src="{% static 'imagenes/LogoAlvaenvases--.png' %}" alt="Grupo Alva"></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-0">
+        <h4 class="section-title bg-dark mb-4 text-uppercase font-weight-bold" style="border-top:none;border-bottom:none;border-right:none;">Encuentranos en</h4>
+        <p class="font-weight-medium text-white"><i class="fa fa-map-marker-alt mr-2"></i>Santa Ma. Palapa, Carretera San Martín Manzana 019, 55850 San Martín de las Pirámides, Méx.</p>
+                <p class="font-weight-medium text-white"><i class="fa fa-phone-alt mr-2"></i>5949585467</p>
+                <p class="font-weight-medium text-white"><i class="fa fa-envelope mr-2"></i></p>
+        <h6 class="mt-4 mb-3  text-uppercase font-weight-bold">Siguenos</h6>
+        <div class="d-flex justify-content-start">
+            <a id="iconos_redes" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.tiktok.com/@alvamexpinturasoficial?_t=8pK758Jln3F&_r=1"><i class="fab fa-tiktok"></i></a>
+            <a id="iconos_redes" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.facebook.com/Alvamex"><i class="fab fa-facebook-f"></i></a>
+            <a id="iconos_redes" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.linkedin.com/company/alvamex/"><i class="fab fa-linkedin-in"></i></a>
+            <a id="iconos_redes" class="btn btn-lg btn-secondary btn-lg-square mr-2" href="https://www.instagram.com/alvamex_oficial/"><i class="fab fa-instagram"></i></a>
+            <a id="iconos_redes" class="btn btn-lg btn-secondary btn-lg-square" href="https://www.youtube.com/@alvamexpinturas3301"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-md-12 mb-0">
+        <div class="mb-0 bg-dark">
+            <h4 class="section-title bg-dark mb-4 text-uppercase font-weight-bold" style="border-top:none;border-bottom:none;border-right:none;">Noticias Pasadas</h4>
+        </div>
+        <div class="bg-dark text-center p-1">
+            <p>¿Te perdiste de algo? Tranquilo, acá te lo enviamos</p>
+            <form method="POST" action="{% url 'enviar_notificacion' %}">
+                {% csrf_token %}
+                <div class="input-group mb-0" style="width: 100%;">
+                    <input type="text" name="consulta" class="form-control form-control-lg" placeholder="¿Qué noticia buscas?" required>
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary font-weight-bold px-3">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<div class="container-fluid py-0 px-sm-3 px-md-5 bg-dark" style="">
+<p class="m-0 text-center" style="color: #fff; font-weight:600;">&copy; <span href="#">Copyright</span>. Todos los derechos reservados. 
+Diseñado para <a style="color: #fff; font-weight:600;" id="copy_footer" href="https://www.alvamex.com.mx/">Grupo Alva "Pintando el Futuro"</a></p>
+</div>
+<!-- Footer End -->
+
+</body>
+</html>

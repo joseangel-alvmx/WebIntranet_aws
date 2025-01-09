@@ -1,0 +1,21 @@
+2	Administrativo
+3	Almacenista
+4	Ampliador
+5	Analista Administrativo
+6	Analista de Capital Humano
+7	Analista Contable
+8	Analista de Aplicaciones
+9	Analista de Compras
+10	Analista de Crédito y Cobranza
+11	Analista de Cuentas por Pagar
+12	Analista de Datos
+13	Analista de Información Financiera
+14	Analista de Reclutamiento
+15	Analista de Redes
+16	Analista de Nóminas
+17	Asesor Técnico
+18	Asistente de Control de Calidad
+19	Asistente Administrativo
+20	Asistente de Calidad
+21	Asistente de Investigación y Desarrollo
+22	Atención a Clientes

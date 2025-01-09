@@ -1,0 +1,71 @@
+{% load static %}
+<!-- templates/pdf_edit_modal.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Incidencias</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Editar Formato: {{ pdf_file.title }}</h2>
+        <button class="btn btn-primary" onclick="openModal()">Editar Formato</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="editPdfModal" tabindex="-1" aria-labelledby="editPdfModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editPdfModalLabel">Editar Formato</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editPdfForm">
+                            <div class="mb-3">
+                                <label for="text" class="form-label">Añadir Texto</label>
+                                <input type="text" class="form-control" id="text" name="text" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="x" class="form-label">Posición X</label>
+                                <input type="number" class="form-control" id="x" name="x" value="50" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="y" class="form-label">Posición Y</label>
+                                <input type="number" class="form-control" id="y" name="y" value="50" required>
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="submitEditForm()">Guardar cambios</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function openModal() {
+            var modal = new bootstrap.Modal(document.getElementById('editPdfModal'));
+            modal.show();
+        }
+
+        function submitEditForm() {
+            var formData = $('#editPdfForm').serialize();
+            $.ajax({
+                url: '{% url "pdf_edit" pdf_file.pk %}',
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    alert(response.message);
+                    $('#editPdfModal').modal('hide');
+                },
+                error: function(xhr) {
+                    alert("Error al editar el PDF.");
+                }
+            });
+        }
+    </script>
+</body>
+</html>
