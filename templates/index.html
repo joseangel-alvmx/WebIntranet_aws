@@ -1,62 +1,9 @@
-{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-   <!-- basic -->
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <!-- mobile metas -->
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <title>Grupo Alva</title>
-   <!-- style css -->
-   <link rel="stylesheet" text="text/css" href="{% static 'css/estilos.css' %}">
-   <!-- Responsive-->
-</head>
-<style>
-
-</style>
-<body class="bg-dark">
-  <div id="app">
-    <div id="hero">
-      <div class="top-left">
-        <img id="imagen_barra" src="{% static 'imagenes/pp.png' %}" alt="Grupo Alva Logo">
-      </div>
-      <div class="top-right">
-        <img src="{% static 'imagenes/GrupoALVA.png' %}"  alt="Grupo Alva Logo" width="400" height="150">
-     </div>
-     <div class="bottom-right">
-      <img id="imagen_barra" src="{% static 'imagenes/pp2.png' %}" alt="Grupo Alva Bars">
-    </div>
-    <div class="container_index">
-      <h5 class="titulo" >Intranet Corporativa</h5>
-      <h2 class="subtitle">Bienvenido</h2>
-      <h3 class="slogan"  style="color:#fff;">¡Pintando el Futuro!</h3>
-      <a id="buttons" class="" href="/signin/">Inicio Sesión</a>
-      <a id="buttons" class="" href="/about_us/">Leer mas</a>
-    </div>
-  </div>
+{% extends 'layouts/baseindex.html' %}
 
 
+{% block content %}
 
-  <script type="module">
-    import { neonCursor } from 'https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js';
+  {% include 'index/happynewyear.html' %}
 
-    neonCursor({
-        el: document.getElementById('app'),
-        shaderPoints: 16,
-        curvePoints: 80,
-        curveLerp: 0.5,
-        radius1: 5,
-        radius2: 30,
-        velocityTreshold: 10,
-        sleepRadiusX: 280,
-        sleepRadiusY: 180,
-        sleepTimeCoefX: 0.0025,
-        sleepTimeCoefY: 0.0025
-    });
-  </script>
-</body>
-</html>
+{% endblock %}

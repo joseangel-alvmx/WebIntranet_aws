@@ -21,9 +21,15 @@ from django.conf import settings
 from django.conf.urls.static import static 
 # from django.views.generic import TemplateView
 
+# 
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
+
 urlpatterns = [
     # path('', TemplateView.as_view(template_name='index.html')),
     path('admin/', admin.site.urls),
+    path('sentry-debug/', trigger_error),
     path('', include("Dashboard.urls"))
 ]
 

@@ -184,8 +184,8 @@
             {% endfor %}
         {% endif %}
         </div>
-        <div class="col-lg-4 text-center text-lg-right" style="height: 7rem;">
-            <a href="https://www.alvamex.com.mx/"><img class="img-fluid" src="{% static 'imagenes/logoDiamante.jpg' %}" alt="Alvamex" style="height: 100%;"></a>
+        <div class="col-lg-4 text-center text-lg-right" style="height: 4rem;">
+            <a href="https://www.alvamex.com.mx/"><img class="img-fluid" src="{% static 'imagenes/logoDiamante.jpg' %}" alt="Diamante" style="height: 100%;"></a>
         </div>
     </div>
 </div>
@@ -201,7 +201,7 @@
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
+        <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse" style="height: 4.5rem;">
             <div class="navbar-nav mr-auto py-0">
                 <a href="/diamante/" class="nav-item nav-link">Inicio</a>
                 <a href="/diamante/dprom/" class="nav-item nav-link">Promociones</a>
@@ -216,7 +216,11 @@
                 </div>
                 <a href="#footer_idx" class="nav-item nav-link">Contacto</a>
             </div>
-            <div class="navbar-nav  py-0" style="width: 100%; max-width: 300px;">
+            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" >
+                <a href="https://system.netsuite.com/pages/customerlogin.jsp" class="nav-item nav-link" target="blank_"><img src="{% static 'imagenes/netsuite.png' %}" alt="netsuite" style="height: 4rem;"></a>
+            </div>
+            <div class="navbar-nav  py-0" style="width: 100%; max-width: 200px;">
+                
                 {% if user.is_authenticated %}
                 <a id="cerrar_sesion" href="/logout" class="nav-item nav-link">CERRAR SESIÓN</a>
                 {% endif %}

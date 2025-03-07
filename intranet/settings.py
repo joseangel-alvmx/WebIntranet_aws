@@ -14,7 +14,7 @@ from pathlib import Path
 
 import os
 import environ
-
+import sentry_sdk
 
 
 
@@ -37,7 +37,7 @@ SECRET_KEY = env("SECRET_KEY")
 # DEBUG = True
 DEBUG = env.bool("DEBUG", default=0)
 
-#ALLOWED_HOSTS = ["0.0.0.0", "3.132.170.171"]
+#ALLOWED_HOSTS = ["0.0.0.0", "18.221.91.38"]
 ALLOWED_HOSTS = env.str("DJANGO_ALLOWED_HOSTS").split(" ")
 
 
@@ -87,16 +87,25 @@ WSGI_APPLICATION = "intranet.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+#DATABASES = {
+#    "default": {
+#        'ENGINE': env.str("POSTGRES_ENGINE"),
+#        'HOST': env.str("POSTGRES_HOST"),
+#        'PORT': env.int("POSTGRES_PORT"),
+#        'NAME': env.str("POSTGRES_DATABASE"),
+#        'USER': env.str("POSTGRES_USER"),
+#        'PASSWORD': env.str("POSTGRES_PASSWORD"),      
+#    }
+#} 
+
 DATABASES = {
     "default": {
         'ENGINE': env.str("POSTGRES_ENGINE"),
         'HOST': env.str("POSTGRES_HOST"),
         'PORT': env.int("POSTGRES_PORT"),
         'NAME': env.str("POSTGRES_DATABASE"),
-        'USER': env.str("POSTGRES_USER"),
-        'PASSWORD': env.str("POSTGRES_PASSWORD"),
-
-        
+        'USER': env.str('POSTGRES_USER'),
+        'PASSWORD': 'reno500!',      
     }
 }
 
@@ -157,5 +166,26 @@ EMAIL_HOST_USER = env.str('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost" ,"http://3.132.170.171" ]
+CSRF_TRUSTED_ORIGINS = ["http://localhost" ,"http://18.221.91.38" ]
                         # ,"http://intranet.grupoalva.net"]
+
+
+
+# CONFIGURACION DE SENTRY
+
+SENTRY_DSN = env.str("SENTRY_DSN",default=None)
+
+if SECRET_KEY:
+
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for tracing.
+        traces_sample_rate=1.0,
+        _experiments={
+            # Set continuous_profiling_auto_start to True
+            # to automatically start the profiler on when
+            # possible.
+            "continuous_profiling_auto_start": True,
+        },
+    )
